@@ -12,7 +12,7 @@ export const routes: Routes = [
     ,{
         path:'history',
         component: ConversionHistoryComponent,
-        title: 'Conversion History'
+        title: 'History'
 
     }
 

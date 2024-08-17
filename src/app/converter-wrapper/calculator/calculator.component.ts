@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { evaluate } from 'mathjs';
-import { CalculatorButtonComponent } from './calculator-button/calculator-button.component';
+
 @Component({
   selector: 'app-calculator',
   standalone: true,
-  imports: [CalculatorButtonComponent],
+  imports: [],
   templateUrl: './calculator.component.html',
   styleUrl: './calculator.component.css'
 })
