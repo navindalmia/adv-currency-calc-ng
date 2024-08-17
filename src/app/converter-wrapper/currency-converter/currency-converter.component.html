@@ -1,0 +1,94 @@
+<div class="container-fluid convertor">
+    <h2 class="text-center">Currency Converter</h2>
+    <form [formGroup]="currencyConverterForm" class="p-4">
+        <div class="row pb-2">
+            <div class="col-12">
+                <label for="sourceCurrency" class="form-label">Source Currency</label>
+                <select class="form-control" formControlName="sourceCurrency" required>
+                    <option value="" disabled>Select Source Currency</option>
+                    <option *ngFor="let currency of currencies" [value]="currency">{{ currency }}</option>
+                </select>
+                <div *ngIf="sourceCurrency.invalid && (sourceCurrency.dirty || sourceCurrency.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="sourceCurrency.hasError('required')">Source Currency is required.</div>
+                </div>
+            </div>
+        </div>
+        <div class="row  pb-2">
+            <div class="col-12">
+                <label for="destinationCurrency" class="form-label">Destination Currency</label>
+                <select class="form-control" formControlName="destinationCurrency" required>
+                    <option value="" disabled>Select Destination Currency</option>
+                    <option *ngFor="let currency of currencies" [value]="currency">{{ currency }}</option>
+                </select>
+                <div *ngIf="destinationCurrency.invalid && (destinationCurrency.dirty || destinationCurrency.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="destinationCurrency.hasError('required')">Destination Currency is required.</div>
+                </div>
+            </div>
+        </div>
+        <div class="row  pb-2">
+            <div class="col-12">
+                <label for="sourceAmount" class="form-label">Source Amount</label>
+                <input inputmode="decimal" type="number" class="form-control" formControlName="sourceAmount" required />
+
+                <div *ngIf="sourceAmount?.invalid && (sourceAmount?.dirty || sourceAmount?.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="sourceAmount?.hasError('required')">
+                        Amount is required.
+                    </div>
+                    <div *ngIf="sourceAmount?.hasError('positiveNumber')">
+                        Amount must be greater than 0.
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="convertor-btns pb-3">
+            <button type="button" class="btn btn-primary mt-3 w-50 button-height"
+                (click)="handleConvert()">Convert</button>
+            <button type="button" class="btn btn-secondary mt-3 ms-2 w-50 button-height"
+                (click)="handleClear()">Clear</button>
+        </div>
+
+        <div class="row  pb-2">
+            <div class="col-12">
+                <label for="rate" class="form-label">Rate</label>
+                <input type="number" class="form-control" readonly formControlName="rate" />
+            </div>
+        </div>
+        <div class="row  pb-2">
+            <div class="col-12">
+                <label for="destinationAmount" class="form-label">Destination Amount</label>
+                <input type="number" class="form-control" readonly formControlName="destinationAmount" />
+            </div>
+        </div>
+        <div class="row  pb-2">
+            <div class="col-12">
+                <label for="notes" class="form-label">Notes</label>
+                <textarea type="text" class="form-control" formControlName="notes" row="1"> </textarea>
+            </div>
+        </div>
+        <button type="button" class="btn btn-secondary mt-3  mb-3 w-100  button-height" (click)="handleSaveConversion()"
+            [disabled]="isSaveDisabled">
+            Save Conversion
+        </button>
+
+        <div className="mt-3">
+            <p>Rate Source: {{rateSource}}</p>
+            <p>Last Update: {{updateDate}}</p>
+        </div>
+
+        <div *ngIf="saveMessage" class="mt-3">
+            <div *ngIf="!error" class="alert alert-success" role="alert">
+                {{ saveMessage }}
+            </div>
+            <div *ngIf="error" class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+        </div>
+    </form>
+
+
+</div>

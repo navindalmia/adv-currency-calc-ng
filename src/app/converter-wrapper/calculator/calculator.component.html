@@ -1,0 +1,58 @@
+<!-- <p>calculator works!</p> -->
+
+
+<div class="container calculator">
+    <h2>Calculator</h2>
+    <div class="mb-3">
+        <div class="row mb-3">
+            <div class="col">
+                <input type="text" [value]="input" readonly (keydown)="handleKeyDown($event)" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="error">
+                    {{error}}
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-wrapper">
+            <div class="btn-container ">
+                <button type="button" class="btn btn-primary" (click)="handleButtonClick(1)"> {{ 1 }}</button>
+                <button type="button" class="btn btn-primary" (click)="handleButtonClick(2)"> {{ 2 }}</button>
+                <button type="button" class="btn btn-primary" (click)="handleButtonClick(3)"> {{ 3 }}</button>
+                <button type="button" class="btn btn-secondary" (click)="handleButtonClick('+')"> {{ '+' }}</button>
+            </div>
+            <div class="btn-container">
+                <button type="button" class="btn btn-primary" (click)="handleButtonClick(4)"> {{ 4 }}</button>
+                <button type="button" class="btn btn-primary" (click)="handleButtonClick(5)"> {{ 5 }}</button>
+                <button type="button" class="btn btn-primary" (click)="handleButtonClick(6)"> {{ 6 }}</button>
+                <button type="button" class="btn btn-secondary" (click)="handleButtonClick('+')"> {{ '-' }}</button>
+            </div>
+            <div class="btn-container">
+                <button type="button" class="btn btn-primary" (click)="handleButtonClick(7)"> {{ 7 }}</button>
+                <button type="button" class="btn btn-primary" (click)="handleButtonClick(8)"> {{ 8 }}</button>
+                <button type="button" class="btn btn-primary" (click)="handleButtonClick(9)"> {{ 9 }}</button>
+                <button type="button" class="btn btn-secondary" (click)="handleButtonClick('+')"> {{ '*' }}</button>
+            </div>
+            <div class="btn-container">
+                <button type="button" class="btn btn-primary" (click)="handleButtonClick(0)"> {{ 0 }}</button>
+                <button type="button" class="btn btn-secondary" (click)="handleButtonClick('(')"> {{ '(' }}</button>
+                <button type="button" class="btn btn-secondary" (click)="handleButtonClick(')')"> {{ ')' }}</button>
+                <button type="button" class="btn btn-secondary" (click)="handleButtonClick('/')"> {{ '/' }}</button>
+            </div>
+            <div class="btn-container">
+                <button type="button" class="btn btn-secondary" (click)="handleButtonClick('.')"> {{ '.' }}</button>
+                <button type="button" class="btn btn-secondary" (click)="handleButtonClick('C')"> {{ 'C' }}</button>
+                <button type="button" class="btn btn-secondary w-50" (click)="handleButtonClick('=')"> {{ '='
+                    }}</button>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+</div>
