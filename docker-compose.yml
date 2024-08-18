@@ -1,0 +1,15 @@
+services:
+  adv-currency-calc-ng:
+    container_name: adv-currency-calc-ng-container
+    build: .
+    image: adv-currency-calc-ng:v1
+    ports:
+      - 80:80
+    expose:
+      - 80
+    networks:
+      - internalnet
+
+networks:
+  internalnet:
+    driver: bridge
