@@ -20,21 +20,11 @@
 
 <nav ngbNav #nav="ngbNav" class="nav-tabs">
 	<ng-container ngbNavItem>
-		<a ngbNavLink [routerLink]="'/'" >Converter</a>
+		<a ngbNavLink [routerLink]="'/'">Converter</a>
 	</ng-container>
 	<ng-container ngbNavItem>
 		<a ngbNavLink [routerLink]="'/history'">History</a>
-	
 	</ng-container>
-	
 </nav>
-
 <div [ngbNavOutlet]="nav" class="mt-2"></div>
-
-
-
-
-
-
-
 <router-outlet />

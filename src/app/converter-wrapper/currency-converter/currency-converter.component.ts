@@ -19,8 +19,8 @@ export class CurrencyConverterComponent implements OnInit {
   rateSource: string = "";
   updateDate!: Date;
   rates: { [key: string]: number } = {};
-  saveMessage : string = "";
-  error : string = "";
+  saveMessage: string = "";
+  error: string = "";
 
   currencyConverterForm = new FormGroup({
     sourceCurrency: new FormControl('', [Validators.required]),
@@ -29,13 +29,8 @@ export class CurrencyConverterComponent implements OnInit {
     destinationAmount: new FormControl({ value: '', disabled: true }),
     setDestinationAmount: new FormControl(''),
     rate: new FormControl({ value: '', disabled: true }),
-    // rateSource: new FormControl(''),
-    // updateDate: new FormControl(''),
-    // rates: new FormControl(),
     notes: new FormControl(''),
-    // error: new FormControl(''),
-    saveSuccess: new FormControl('')
-    // isSaveDisabled: new FormControl('')
+    
   });
 
   get sourceAmount() {
@@ -66,13 +61,7 @@ export class CurrencyConverterComponent implements OnInit {
     this.currencyConverterForm.get('destinationAmount')?.setValue(convertedAmount.toFixed(3));
     this.currencyConverterForm.get('destinationAmount')?.setValue(convertedAmount.toFixed(3));
     this.currencyConverterForm.get('rate')?.setValue(conversionRate.toFixed(5));
-    // this.currencyConverterForm.get('error')?.setValue('');
-
-   
     this.enableSaveButton();
-
-
-
   }
 
 
@@ -81,28 +70,26 @@ export class CurrencyConverterComponent implements OnInit {
       sourceCurrency: '',
       destinationCurrency: '',
       sourceAmount: '',
-      destinationAmount:''
-      
+      destinationAmount: ''
     });
-   
-   this.disableSaveButton();
+    this.disableSaveButton();
   }
   handleSaveConversion(): void {
     if (this.currencyConverterForm.valid) {
       const conversion: Conversion = {
         sourceCurrency: this.currencyConverterForm.get('sourceCurrency')?.value!,
         destinationCurrency: this.currencyConverterForm.get('destinationCurrency')?.value!,
-        sourceAmount:Number( this.currencyConverterForm.get('sourceAmount')?.value),
-        destinationAmount:Number( this.currencyConverterForm.get('destinationAmount')?.value),
-        rate: Number( this.currencyConverterForm.get('rate')?.value),
+        sourceAmount: Number(this.currencyConverterForm.get('sourceAmount')?.value),
+        destinationAmount: Number(this.currencyConverterForm.get('destinationAmount')?.value),
+        rate: Number(this.currencyConverterForm.get('rate')?.value),
         date: new Date().toISOString(),
-        rateSource:this.rateSource,
-        notes: this.currencyConverterForm.get('notes')?.value??null
+        rateSource: this.rateSource,
+        notes: this.currencyConverterForm.get('notes')?.value ?? null
       };
 
       try {
-         this.saveMessage = this.currencyService.saveConversion(conversion);
-         this.displaySuccess(this.saveMessage);
+        this.saveMessage = this.currencyService.saveConversion(conversion);
+        this.displaySuccess(this.saveMessage);
       } catch (error) {
         if (error instanceof Error) {
           this.error = error.message;
@@ -123,36 +110,36 @@ export class CurrencyConverterComponent implements OnInit {
 
 
     });
-    
+
     this.currencyConverterForm.get('sourceCurrency')?.valueChanges.subscribe(() => {
       this.disableSaveButton();
     });
-  
+
     this.currencyConverterForm.get('destinationCurrency')?.valueChanges.subscribe(() => {
       this.disableSaveButton();
     });
-  
+
     this.currencyConverterForm.get('sourceAmount')?.valueChanges.subscribe(() => {
       this.disableSaveButton();
     });
 
-   
+
   }
 
   disableSaveButton(): void {
     this.isSaveDisabled = true;
   }
-  
+
   enableSaveButton(): void {
     this.isSaveDisabled = false;
   }
-  displaySuccess(message:string):void {    
-    setTimeout(() => this.saveMessage ='', 3000);
-  this.disableSaveButton();
+  displaySuccess(message: string): void {
+    setTimeout(() => this.saveMessage = '', 3000);
+    this.disableSaveButton();
   }
-  displayError(message:string):void {    
-    setTimeout(() => this.error ='', 3000);
-  this.enableSaveButton();
+  displayError(message: string): void {
+    setTimeout(() => this.error = '', 3000);
+    this.enableSaveButton();
   }
 
 
@@ -162,7 +149,6 @@ export class CurrencyConverterComponent implements OnInit {
 export function positiveNumberValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
     const value = control.value;
-    
     return value != null && value <= 0 ? { 'positiveNumber': { value: control.value } } : null;
   };
 }

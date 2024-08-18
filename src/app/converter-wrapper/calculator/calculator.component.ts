@@ -20,22 +20,22 @@ export class CalculatorComponent {
       this.handleButtonClick(key);
     }
   }
-  
-   handleButtonClick(value:string|Number) : void {
+
+  handleButtonClick(value: string | Number): void {
     if (value === 'C') {
-     this.input=''
-      this.error='';
+      this.input = ''
+      this.error = '';
     } else if (value === '=') {
       try {
-        this.input=evaluate(this.input).toString();
+        this.input = evaluate(this.input).toString();
       } catch (err) {
-        
+
         this.error = 'Invalid Expression';
       }
     } else {
-      if (this.error) this.error='';
-      
-      this.input +=value;
+      if (this.error) this.error = '';
+
+      this.input += value;
     }
   };
 }

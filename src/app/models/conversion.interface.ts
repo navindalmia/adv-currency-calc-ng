@@ -5,7 +5,7 @@ export interface Conversion {
     destinationAmount: number;
     rate: number;
     date: string;
-    rateSource : string;
+    rateSource: string;
     notes: string | null;
-    [key: string]: string | number| null; 
+    [key: string]: string | number | null;
 }

@@ -4,13 +4,13 @@ import { ConverterWrapperComponent } from './converter-wrapper/converter-wrapper
 
 export const routes: Routes = [
     {
-        path:'',
+        path: '',
         component: ConverterWrapperComponent,
         title: 'Converter'
 
     }
-    ,{
-        path:'history',
+    , {
+        path: 'history',
         component: ConversionHistoryComponent,
         title: 'History'
 

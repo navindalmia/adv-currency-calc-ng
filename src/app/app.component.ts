@@ -11,6 +11,6 @@ import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  // active = 1;
+  
   title = 'Advanced Converter';
 }

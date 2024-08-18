@@ -31,7 +31,6 @@
             <div class="col-12">
                 <label for="sourceAmount" class="form-label">Source Amount</label>
                 <input inputmode="decimal" type="number" class="form-control" formControlName="sourceAmount" required />
-
                 <div *ngIf="sourceAmount?.invalid && (sourceAmount?.dirty || sourceAmount?.touched)"
                     class="alert alert-danger">
                     <div *ngIf="sourceAmount?.hasError('required')">
@@ -41,17 +40,14 @@
                         Amount must be greater than 0.
                     </div>
                 </div>
-                
             </div>
         </div>
-
         <div class="convertor-btns pb-3">
             <button type="button" class="btn btn-primary mt-3 w-50 button-height"
                 (click)="handleConvert()">Convert</button>
             <button type="button" class="btn btn-secondary mt-3 ms-2 w-50 button-height"
                 (click)="handleClear()">Clear</button>
         </div>
-
         <div class="row  pb-2">
             <div class="col-12">
                 <label for="rate" class="form-label">Rate</label>
@@ -74,12 +70,10 @@
             [disabled]="isSaveDisabled">
             Save Conversion
         </button>
-
         <div className="mt-3">
             <p>Rate Source: {{rateSource}}</p>
             <p>Last Update: {{updateDate}}</p>
         </div>
-
         <div *ngIf="saveMessage" class="mt-3">
             <div *ngIf="!error" class="alert alert-success" role="alert">
                 {{ saveMessage }}
@@ -89,6 +83,4 @@
             </div>
         </div>
     </form>
-
-
 </div>
