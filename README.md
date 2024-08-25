@@ -79,9 +79,30 @@ Sample Images from the application<br>
 
 ![Screenshot](images/Calculator.png "Calculator")
 
+# Angular Project with Docker Support
+
+This project is an Angular application that is containerized using Docker. The Dockerfile provided allows you to easily build and run the application in a Docker container.
+
+## Prerequisites
+
+- Docker: [Install Docker](https://docs.docker.com/get-docker/)
 
 
-# AdvCurrencyCalcNg
+## Building the Docker Image
+
+To build the Docker image for this Angular application, run the following command in the root directory of the project:
+
+```bash
+docker build -t my-angular-app .
+```
+
+
+
+
+
+
+
+## **AdvCurrencyCalcNg**
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.4.
 
