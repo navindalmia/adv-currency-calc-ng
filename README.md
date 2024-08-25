@@ -79,7 +79,7 @@ Sample Images from the application<br>
 
 ![Screenshot](images/Calculator.png "Calculator")
 
-# Angular Project with Docker Support
+## Docker Support
 
 This project is an Angular application that is containerized using Docker. The Dockerfile provided allows you to easily build and run the application in a Docker container.
 
@@ -93,14 +93,25 @@ This project is an Angular application that is containerized using Docker. The D
 To build the Docker image for this Angular application, run the following command in the root directory of the project:
 
 ```bash
-docker build -t my-angular-app .
+docker build -t adv-currency-calc-ng:v1 .
 ```
 
+## Running the Application
+After building the Docker image, you can run the application using the following command:
+```bash
+docker run -p 4200:80 adv-currency-calc-ng:v1
+```
+
+You can then access the application by navigating to http://localhost:4200 in your web browser.
 
 
-
-
-
+## Using Docker Compose
+If you prefer to use Docker Compose, you can start the application with:
+```bash
+docker-compose up
+```
+This will automatically build the image (if not already built) and start the application.
+You can then access the application by navigating to http://localhost:80 in your web browser.
 
 ## **AdvCurrencyCalcNg**
 
